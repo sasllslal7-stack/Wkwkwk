@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Random ke WhatsApp</title>
+</head>
+<body>
+
+  <h2>Generate Nomor & Masuk WhatsApp</h2>
+
+  <p id="hasil">Belum generate</p>
+
+  <button onclick="generateWA()">Generate & Buka WA</button>
+
+  <script>
+    function generateWA() {
+      // batas angka (BigInt)
+      const min = 81211111111n;
+      const max = 81297527629n;
+
+      // random BigInt
+      const range = max - min + 1n;
+      const randomBigInt = min + BigInt(
+        Math.floor(Math.random() * Number(range))
+      );
+
+      // simpan ke "nama"
+      const nama = randomBigInt.toString();
+
+      // tampilkan
+      document.getElementById("hasil").innerText =
+        "Nomor hasil generate: " + nama;
+
+      // redirect ke WhatsApp
+      const url = "https://wa.me/62" + nama;
+      window.open(url, "_blank");
+    }
+  </script>
+
+</body>
+</html>
